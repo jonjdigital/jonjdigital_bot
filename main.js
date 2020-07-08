@@ -15,6 +15,7 @@ Client.on("guildMemberAdd", member=>{
         return
     }
     channel.send(`Welcome to JonJDigital's Official server, ${member}. I hope you enjoy your stay, and please follow the rules.`)
+    member.addRole(member.guild.roles.find(role => role.name === "Public"));
 
 })
 
@@ -107,8 +108,33 @@ Client.on('message', message => {
             message.delete();
         }
     }
+
     if (message.content.startsWith(prefix + "permaban")) {
-        if (message.member.hasPermission("BAN_MEMBERS")) {
+        var args = message.content.split(' ').slice(1); // All arguments behind the command name with the prefix
+        var user = message.mentions.users.first(); // returns the user object if an user mention exists
+        var banReason = args.slice(1).join(' '); // Reason of the ban (Everything behind the mention)
+        if(!user){
+            try{
+                if(!message.guid.members.get(args.slice(0,1).join(' '))) throw new Error("Couldn't find a Discord user with that UserID!");
+                user = message.guild.members.get(args.slice(0,1).joni(' '));
+                user = user.user;
+            }catch(error){
+                return message.reply("Couldn't find a Discord user with that UserID!")
+            }
+        }
+        if(user === message.author) return message.reply("You cannot ban yourself!");
+        if(!reason) message.channel.send("You did not give a reason, so no reason will be saved.")
+        if(!message.guild.member(user).bannable) return message.reply("This user cannot be banned, as the bot does not have sufficient priveleges.")
+
+        message.guild.ban(user)
+
+        const banComfEmbed = new Discord.RichEmbed()
+            .setColor('RED')
+            .setDescription(`✅ ${user.tag} has been successfully banned! Reason: ${banReason}`);
+        message.channel.send({
+            embed: banComfEmbed
+        })
+        /*if (message.member.hasPermission("BAN_MEMBERS")) {
             var user = message.mentions.users.first();
             var member = message.guild.member(user);
             var content = message.content.split(" ");
@@ -138,7 +164,7 @@ Client.on('message', message => {
         } else {
             message.reply("You do not have permission to use this command.")
             message.delete();
-        }
+        }*/
     }
 })
 
