@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b417b223-c8fe-43fc-8c0a-c47f4e91b43d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,9 +26,44 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/divster-discord/bot.js" />
+    <property name="nodejs.cucumber.cucumber_node_package_dir" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager" selected="Node.js.nodemon main.js">
+    <configuration name="Unnamed" type="NodeJSConfigurationType" nameIsGenerated="true" node-parameters="main.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" node-parameters="nodemon" path-to-js-file="main.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="nodemon main.js" type="NodeJSConfigurationType" application-parameters="nodemon" nameIsGenerated="true" path-to-js-file="main.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt">
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="nodemon" />
+        <script value="main.js" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.main.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -36,7 +76,11 @@
       <option name="presentableId" value="Default" />
       <updated>1594232305897</updated>
       <workItem from="1594232309315" duration="36000" />
-      <workItem from="1594232350732" duration="1462000" />
+      <workItem from="1594232350732" duration="1734000" />
+      <workItem from="1594759638836" duration="454000" />
+      <workItem from="1595360784801" duration="43000" />
+      <workItem from="1596722782642" duration="7599000" />
+      <workItem from="1596736905799" duration="3936000" />
     </task>
     <servers />
   </component>
@@ -44,10 +88,90 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1594232346501">
+    <state x="239" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596724515993">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594232346501" />
+    <state x="239" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1596724515993" />
+    <state x="565" y="87" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1596724182020">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="565" y="87" key="#com.intellij.ide.macro.MacrosDialog/0.0.1366.728@0.0.1366.728" timestamp="1596724182020" />
+    <state x="392" y="99" key="#nodemon_main.js" timestamp="1596724304406">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="392" y="99" key="#nodemon_main.js/0.0.1366.728@0.0.1366.728" timestamp="1596724304406" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1596725729082">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596725729082" />
+    <state width="1345" height="223" key="GridCell.Tab.0.bottom" timestamp="1596730514561">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596730514561" />
+    <state width="1345" height="223" key="GridCell.Tab.0.center" timestamp="1596730514561">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596730514561" />
+    <state width="1345" height="223" key="GridCell.Tab.0.left" timestamp="1596730514560">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596730514560" />
+    <state width="1345" height="223" key="GridCell.Tab.0.right" timestamp="1596730514561">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596730514561" />
+    <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1596730514562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596730514562" />
+    <state width="1345" height="223" key="GridCell.Tab.1.center" timestamp="1596730514562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596730514562" />
+    <state width="1345" height="223" key="GridCell.Tab.1.left" timestamp="1596730514561">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596730514561" />
+    <state width="1345" height="223" key="GridCell.Tab.1.right" timestamp="1596730514562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596730514562" />
+    <state width="1345" height="223" key="GridCell.Tab.2.bottom" timestamp="1596730514563">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596730514563" />
+    <state width="1345" height="223" key="GridCell.Tab.2.center" timestamp="1596730514562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1596730514562" />
+    <state width="1345" height="223" key="GridCell.Tab.2.left" timestamp="1596730514562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1596730514562" />
+    <state width="1345" height="223" key="GridCell.Tab.2.right" timestamp="1596730514562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1596730514562" />
+    <state width="1345" height="223" key="GridCell.Tab.3.bottom" timestamp="1596730514563">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.3.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596730514563" />
+    <state width="1345" height="223" key="GridCell.Tab.3.center" timestamp="1596730514563">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.3.center/0.0.1366.728@0.0.1366.728" timestamp="1596730514563" />
+    <state width="1345" height="223" key="GridCell.Tab.3.left" timestamp="1596730514563">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.3.left/0.0.1366.728@0.0.1366.728" timestamp="1596730514563" />
+    <state width="1345" height="223" key="GridCell.Tab.3.right" timestamp="1596730514563">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.3.right/0.0.1366.728@0.0.1366.728" timestamp="1596730514563" />
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596738569075">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1596738569075" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1594232761160">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
