@@ -145,8 +145,9 @@ Client.on('message', message => {
         })
     }
 
-    if(message.content.startsWith(prefix + "purge")){ //purge defaults to 20 messages if no amount is specified
+    if(message.content.startsWith(prefix + "purge")){ //purge defaults to 10 messages if no amount is specified
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
+            var msgArr = [];
             message.delete();
             var args = message.content.split(' ').slice(1);
             var amount = args.join(' ');
@@ -154,16 +155,30 @@ Client.on('message', message => {
             if (!amount) amount = 10;
             if (isNaN(amount)) return message.reply('Arguments must require a number.');
 
-            if (amount > 100) return msg.reply('You can`t delete more than 100 messages at once!'); // Checks if the `amount` integer is bigger than 100
-            if (amount < 1) return msg.reply('You have to delete at least 1 message!'); // Checks if the `amount` integer is smaller than 1
+            if (amount > 100) return message.reply('You can`t delete more than 100 messages at once!'); // Checks if the `amount` integer is bigger than 100
+            if (amount < 1) return message.reply('You have to delete at least 1 message!'); // Checks if the `amount` integer is smaller than 1
 
             message.channel.messages.fetch({limit: amount}).then(messages => {
                 messages.forEach((value, key, map) => {
                     //display date of msg in console
                     var d = new Date();
+                    //gets the timestamp from 14 days ago to help calc messages that can be delted
                     var apiDateLimit = d.getDate()-14;
+                    var earliestDate = d.setDate(apiDateLimit);
+                    //get timestamp of the message
                     var msgDate = new Date(value.createdTimestamp)
-                    console.log(msgDate)
+                    //get msg id and msg message
+                    var msgId = value.id;
+                    var msgMessage = value.content;
+                    //if msg timestampo - earliest timestamp > 0, add to deletable messages arr
+                    if(msgDate - earliestDate > 0) {
+                        msgArr.push({id: msgId, msg: msgMessage})
+                    }
+
+                })
+                //delete each message included in the array
+                msgArr.forEach((key) => {
+                    message.channel.messages.fetch(key.id).then(msg => msg.delete())
                 })
             }).catch(error => {
                 console.log(error)

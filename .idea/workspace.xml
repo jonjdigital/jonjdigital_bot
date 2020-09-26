@@ -33,13 +33,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b417b223-c8fe-43fc-8c0a-c47f4e91b43d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/typings/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/typings/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +115,9 @@
       <workItem from="1596722782642" duration="7599000" />
       <workItem from="1596736905799" duration="3936000" />
       <workItem from="1601067576179" duration="948000" />
-      <workItem from="1601068547042" duration="3508000" />
+      <workItem from="1601068547042" duration="3690000" />
+      <workItem from="1601148764935" duration="12000" />
+      <workItem from="1601153450616" duration="1346000" />
     </task>
     <servers />
   </component>
@@ -140,6 +137,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="714" y="343" key="#Notifications" timestamp="1601153466498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="714" y="343" key="#Notifications/-1600.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1601153466498" />
     <state x="239" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596724515993">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
