@@ -145,20 +145,28 @@ Client.on('message', message => {
         })
     }
 
-    if(message.content.startsWith(prefix + "purge")){
+    if(message.content.startsWith(prefix + "purge")){ //purge defaults to 20 messages if no amount is specified
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
             message.delete();
             var args = message.content.split(' ').slice(1);
             var amount = args.join(' ');
 
-            if (!amount) return message.reply('You haven\'t given an amount of messages to delete.')
+            if (!amount) amount = 10;
             if (isNaN(amount)) return message.reply('Arguments must require a number.');
 
             if (amount > 100) return msg.reply('You can`t delete more than 100 messages at once!'); // Checks if the `amount` integer is bigger than 100
             if (amount < 1) return msg.reply('You have to delete at least 1 message!'); // Checks if the `amount` integer is smaller than 1
 
             message.channel.messages.fetch({limit: amount}).then(messages => {
-                message.channel.bulkDelete(messages) // deletes x amount of messages up to 14 days old
+                messages.forEach((value, key, map) => {
+                    //display date of msg in console
+                    var d = new Date();
+                    var apiDateLimit = d.getDate()-14;
+                    var msgDate = new Date(value.createdTimestamp)
+                    console.log(msgDate)
+                })
+            }).catch(error => {
+                console.log(error)
             })
         }else{
             return message.reply('You do not have permission to use this command.')
