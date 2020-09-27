@@ -1,8 +1,36 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const Client = new Discord.Client();
+const fs = require('fs');
 
 var prefix = "j";
+
+//see if modrole json file exists
+fs.access('modroles.json', (err) => {
+    if(err) {
+        fs.writeFile('modroles.json','["admin" : [], "mods" : []]', (err) => {
+            if(err) console.error(err)
+        })
+    }
+})
+
+var modRoles = require('./modroles.json')
+var adminRoles = modRoles[0]['admins']
+var moderatorRoles = modRoles[1]['mods']
+
+console.log(adminRoles)
+
+function updateRoleFile(adminRoles, moderatorRoles){
+    modRoles[0]['admins'] = adminRoles
+    modRoles[1]['mods'] = moderatorRoles
+    var roles = modRoles
+    console.log(modRoles)
+    fs.writeFile('modroles.json', JSON.stringify(roles), err=>{
+        if(err) throw err
+        // console.log("Done Writing: \n" + roles)
+    })
+}
+
 
 Client.on('ready', ()=>{
     console.log("Bot Ready, Logged in as "+Client.user.tag)
@@ -145,7 +173,8 @@ Client.on('message', message => {
         })
     }
 
-    if(message.content.startsWith(prefix + "purge")){ //purge defaults to 10 messages if no amount is specified
+    //purge defaults to 10 messages if no amount is specified
+    if(message.content.startsWith(prefix + "purge")){
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
             var msgArr = [];
             message.delete();
@@ -180,6 +209,10 @@ Client.on('message', message => {
                 msgArr.forEach((key) => {
                     message.channel.messages.fetch(key.id).then(msg => msg.delete())
                 })
+
+                /**
+                 * TO DO - Add feature to log deleted messages to a logs channel
+                 * */
             }).catch(error => {
                 console.log(error)
             })
@@ -187,6 +220,82 @@ Client.on('message', message => {
             return message.reply('You do not have permission to use this command.')
         }
     }
+
+
+    //save mode role IDs to a json file
+    if(message.content.startsWith(prefix + "setadmin") && message.author.id === message.guild.ownerID){
+        // console.log(message.content)
+        var serverId = message.guild.id;
+        // console.log("Server ID: " + serverId)
+        //break message up into bits
+        var args = message.content.split(' ').slice(1)
+        if(args[0].startsWith('<@&') && args[0]){
+            var roleId = args[0].slice(3, -1)
+
+            if(adminRoles.indexOf({"server": serverId, "role" : roleId}) < 0){
+                adminRoles[serverId] = {"role" : roleId}
+            }else{
+                adminRoles.push({"role" : roleId})
+            }
+
+            modRoles[0]['admins'] = adminRoles
+            modRoles[1]['mods'] = moderatorRoles
+            console.log(modRoles[0]['admins'][serverId])
+            console.log(modRoles)
+
+
+
+        }
+    }
+
+    if(message.content.startsWith(prefix + "setmod") && message.author.id === message.guild.ownerID){
+        // console.log(message.content)
+        var serverId = message.guild.id;
+        // console.log("Server ID: " + serverId)
+        //break message up into bits
+        var args = message.content.split(' ').slice(1)
+        if(args[0].startsWith('<@&') && args[0]){
+            var roleId = args[0].slice(3, -1)
+
+            if(moderatorRoles.indexOf({"server": serverId, "role" : roleId}) < 0){
+                moderatorRoles[serverId] = {"role" : roleId}
+            }else{
+                moderatorRoles.push({"role" : roleId})
+            }
+
+            modRoles[0]['admins'] = adminRoles
+            modRoles[1]['mods'] = moderatorRoles
+            // console.log(modRoles[0]['admins'][serverId])
+            console.log(modRoles)
+
+            fs.writeFileSync('modroles.json', JSON.stringify(modRoles, null, 2), err => {
+                if(err) throw err
+                console.log("Role File Updated")
+            })
+
+        }
+    }
+
+    //mod / unmod command to add/remove mod roles to users
+/*    if(message.content.startsWith(prefix + "mod")){
+        //get author id
+        var authorId = message.author.id
+        // var authorAdmin = message.author.roles.some(role => role.name === 'Admins')
+        // console.log(authorAdmin)
+        //get owner id and get super admin role id
+        var ownerId = message.guild.ownerID;
+        var adminRole = message.author.role;
+        // console.log(adminRole)
+        // console.log(ownerId)
+
+        if(message.member.hasPermission("MANAGE_ROLES") && (authorId == ownerId ) ){
+            console.log(message.author.id)
+            message.reply("you can mod")
+        }else{
+            console.log(message.author.id)
+            message.reply("you cannot mod")
+        }
+    }*/
 
     //add mute & unmute command (add/remove silenced role)
 
