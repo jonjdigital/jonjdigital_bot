@@ -3,3 +3,6 @@
 
 //idea directory
 .idea/
+
+//the database file to keep the levels neutral across the live and the dev environment bots
+database.json

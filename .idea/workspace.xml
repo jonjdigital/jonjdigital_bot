@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b417b223-c8fe-43fc-8c0a-c47f4e91b43d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/database.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
@@ -126,7 +127,7 @@
       <workItem from="1603739670723" duration="574000" />
       <workItem from="1603889621609" duration="3664000" />
       <workItem from="1605804223015" duration="822000" />
-      <workItem from="1605805705762" duration="12168000" />
+      <workItem from="1605805705762" duration="15230000" />
     </task>
     <servers />
   </component>
@@ -179,9 +180,9 @@
     </state>
     <state width="1579" height="282" key="GridCell.Tab.0.right/-1600.0.1600.860/0.0.1920.1040@-1600.0.1600.860" timestamp="1601068500839" />
     <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603576032038" />
-    <state x="635" y="279" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1605821285982">
+    <state x="635" y="279" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1605826309395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="635" y="279" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1536.824@0.0.1536.824" timestamp="1605821285982" />
+    <state x="635" y="279" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1536.824@0.0.1536.824" timestamp="1605826309395" />
   </component>
 </project>
