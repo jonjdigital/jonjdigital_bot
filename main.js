@@ -38,18 +38,20 @@ function levelling(message) {
     if (cmd === prefix + "info") {
         var info = db[message.author.id];
         let member = message.mentions.members.first();
-        let memberInfo = db[member.id]
-        if (member && memberInfo) {
-            // message.channel.send(embed);
-            let embed2 = new Discord.MessageEmbed()
-                .setTitle("Profile For: " + member.user.username)
-                .setThumbnail(member.user.avatarURL())
-                .setColor(0x4286f4)
-                .addField("Level", memberInfo.level)
-                .addField("XP", memberInfo.xp + "/100")
-            return message.channel.send(embed2)
-        }else if(member && (memberInfo == null)) {
-            return message.channel.send("User has no levels as they have not spoken yet.")
+        if(member) {
+            let memberInfo = db[member.id]
+            if (member && memberInfo) {
+                // message.channel.send(embed);
+                let embed2 = new Discord.MessageEmbed()
+                    .setTitle("Profile For: " + member.user.username)
+                    .setThumbnail(member.user.avatarURL())
+                    .setColor(0x4286f4)
+                    .addField("Level", memberInfo.level)
+                    .addField("XP", memberInfo.xp + "/100")
+                return message.channel.send(embed2)
+            } else if (member && (memberInfo == null)) {
+                return message.channel.send("User has no levels as they have not spoken yet.")
+            }
         }
         // console.log(message.author)
         let level = 100 * info.level;
