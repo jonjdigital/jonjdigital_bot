@@ -4,11 +4,14 @@ const Client = new Discord.Client({ disableMentions: 'everyone' });
 const fs = require('fs');
 const emb = new Discord.MessageEmbed();
 var dateFormat = require('dateformat');
+let db = JSON.parse(fs.readFileSync("./database.json",'utf8'))
+var mysql = require('mysql');
+var ownerID = 229244232064434177;
 
 const jonjdigitalServerId = "726895718060785744";
 const artCafeServerId = "251756539457568772";
 
-var prefix = "j";
+var prefix = process.env.prefix;
 
 var bannedWords = [
     'anal','ballsack','bastard','bitch','biatch','blowjob','blow job','bollock','bollok','boner','buttplug','clitoris','cock','coon','cunt','dick','dildo','dyke','fag','fellate','fellatio','felching','fudgepacker','fudge packer', 'flange', 'homo', 'jizz', 'knobend', 'knob end', 'labia', 'muff', 'penis', 'piss', 'prick', 'pube', 'pussy', 'scrotum', 'sex', 's hit', 'sh1t', 'slut', 'smegma', 'spunk', 'tit', 'tosser', 'turd', 'twat', 'vagina', 'wank', 'whore'
@@ -17,6 +20,52 @@ var bannedWords = [
 var instantBanWords = [
     'nigga','nigger','queer'
 ]
+
+function levelling(message){
+    // if the user is not on db add the user and change his values to 0
+    if (!db[message.author.id]) db[message.author.id] = {
+        xp: 0,
+        level: 0
+    };
+    db[message.author.id].xp++;
+    let userInfo = db[message.author.id];
+    if(userInfo.xp > (100 * userInfo.level)) {
+        userInfo.level++
+        userInfo.xp = 0
+        message.channel.send(message.author.username + ", Congratulations, you levelled up to level "+userInfo.level)
+    }
+    const args = message.content.slice(prefix).trim().split(/ +/g);
+    const cmd = args.shift().toLowerCase();
+    if(cmd === prefix+"info") {
+        var info = db[message.author.id];
+        let member = message.mentions.members.first();
+        if(member) {
+            // message.channel.send(embed);
+            let memberInfo = db[member.id]
+            let embed2 = new Discord.MessageEmbed()
+                .setTitle("Profile For: " + member.user.username)
+                .setThumbnail(member.user.avatarURL())
+                .setColor(0x4286f4)
+                .addField("Level", memberInfo.level)
+                .addField("XP", memberInfo.xp + "/100")
+            return message.channel.send(embed2)
+        }
+        // console.log(message.author)
+        let level = 100 * userInfo.level;
+        let embed = new Discord.MessageEmbed()
+            .setThumbnail(message.author.avatarURL())
+            .setColor(0x4286f4)
+            .addField("Level", userInfo.level)
+            .addField("XP", userInfo.xp+"/"+level);
+        // if(!member) return message.channel.send(embed)
+        message.channel.send(embed)
+        console.log(member)
+
+    }
+    fs.writeFile("./database.json", JSON.stringify(db), (x) => {
+        if (x) console.error(x)
+    });
+}
 
 function banner(message,reason) {
     msgReason = `You have been banned from ${message.guild.name} for: ${reason}`
@@ -144,6 +193,7 @@ Client.on("guildMemberRemove", member=>{
 //public commands
 Client.on('message', message => {
     if (message.author === Client.user) return;
+    levelling(message);
     // banner(message,message.content)
     wordCheck(message)
     //links, website, connect
@@ -153,6 +203,7 @@ Client.on('message', message => {
 Client.on('message', message => {
     if (message.author === Client.user) return; //ignores the bots own messages
     //ban, warn
+
 
     //kick command.
     if (message.content.toLowerCase().startsWith(prefix + "kick")) {
