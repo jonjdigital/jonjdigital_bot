@@ -5,7 +5,6 @@ const fs = require('fs');
 const emb = new Discord.MessageEmbed();
 var dateFormat = require('dateformat');
 let db = JSON.parse(fs.readFileSync("./database.json",'utf8'))
-var mysql = require('mysql');
 var ownerID = 229244232064434177;
 
 const jonjdigitalServerId = "726895718060785744";
@@ -21,7 +20,7 @@ var instantBanWords = [
     'nigga','nigger','queer'
 ]
 
-function levelling(message){
+function levelling(message) {
     // if the user is not on db add the user and change his values to 0
     if (!db[message.author.id]) db[message.author.id] = {
         xp: 0,
@@ -29,19 +28,19 @@ function levelling(message){
     };
     db[message.author.id].xp++;
     let userInfo = db[message.author.id];
-    if(userInfo.xp > (100 * userInfo.level)) {
+    if (userInfo.xp > (100 * userInfo.level)) {
         userInfo.level++
         userInfo.xp = 0
-        message.channel.send(message.author.username + ", Congratulations, you levelled up to level "+userInfo.level)
+        message.channel.send(message.author.username + ", Congratulations, you levelled up to level " + userInfo.level)
     }
     const args = message.content.slice(prefix).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
-    if(cmd === prefix+"info") {
+    if (cmd === prefix + "info") {
         var info = db[message.author.id];
         let member = message.mentions.members.first();
-        if(member) {
+        let memberInfo = db[member.id]
+        if (member && memberInfo) {
             // message.channel.send(embed);
-            let memberInfo = db[member.id]
             let embed2 = new Discord.MessageEmbed()
                 .setTitle("Profile For: " + member.user.username)
                 .setThumbnail(member.user.avatarURL())
@@ -49,17 +48,19 @@ function levelling(message){
                 .addField("Level", memberInfo.level)
                 .addField("XP", memberInfo.xp + "/100")
             return message.channel.send(embed2)
+        }else if(member && (memberInfo == null)) {
+            return message.channel.send("User has no levels as they have not spoken yet.")
         }
         // console.log(message.author)
-        let level = 100 * userInfo.level;
+        let level = 100 * info.level;
         let embed = new Discord.MessageEmbed()
             .setThumbnail(message.author.avatarURL())
             .setColor(0x4286f4)
-            .addField("Level", userInfo.level)
-            .addField("XP", userInfo.xp+"/"+level);
+            .addField("Level", info.level)
+            .addField("XP", info.xp + "/" + level);
         // if(!member) return message.channel.send(embed)
-        message.channel.send(embed)
-        console.log(member)
+        return message.channel.send(embed)
+        // console.log(member)
 
     }
     fs.writeFile("./database.json", JSON.stringify(db), (x) => {
@@ -190,20 +191,20 @@ Client.on("guildMemberRemove", member=>{
     }
 })
 
-//public commands
 Client.on('message', message => {
-    if (message.author === Client.user) return;
+    if (message.author.id === Client.user.id) return;
     levelling(message);
     // banner(message,message.content)
     wordCheck(message)
+
+    /**
+     * PUBLIC COMMANDS
+     */
     //links, website, connect
-})
 
-//admin commands
-Client.on('message', message => {
-    if (message.author === Client.user) return; //ignores the bots own messages
-    //ban, warn
-
+    /**
+     *ADMIN COMMANDS
+     */
 
     //kick command.
     if (message.content.toLowerCase().startsWith(prefix + "kick")) {
