@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b417b223-c8fe-43fc-8c0a-c47f4e91b43d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/database.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
@@ -127,7 +126,8 @@
       <workItem from="1603739670723" duration="574000" />
       <workItem from="1603889621609" duration="3664000" />
       <workItem from="1605804223015" duration="822000" />
-      <workItem from="1605805705762" duration="15230000" />
+      <workItem from="1605805705762" duration="15543000" />
+      <workItem from="1605985055333" duration="3617000" />
     </task>
     <servers />
   </component>
@@ -184,5 +184,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="635" y="279" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1536.824@0.0.1536.824" timestamp="1605826309395" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605986690751">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1605986690751" />
   </component>
 </project>

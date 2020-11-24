@@ -167,20 +167,15 @@ Client.on("guildMemberAdd", member=>{
     if(!channel) {
         return
     }
-    // console.log(guild.id)
 
-
+    if(member.id !== "691346983494877216") {
         if (guild.id === jonjdigitalServerId) {
             var role = guild.roles.cache.find(role => role.name === 'Public');
-
-
             if (role) {
                 // console.log('Public Role = '+role.id)
                 member.roles.add(role.id)
             }
-            if(member.id !="691346983494877216") {
-                channel.send(`Welcome to JonJDigital's Official server, ${member}. I hope you enjoy your stay, and please follow the rules.`)
-            }
+            channel.send(`Welcome to JonJDigital's Official server, ${member}. I hope you enjoy your stay, and please follow the rules.`)
         } else if (guild.id === artCafeServerId) {
             var mortalRole = guild.roles.cache.find(role => role.name === 'Mortals');
             if (mortalRole) {
@@ -190,10 +185,9 @@ Client.on("guildMemberAdd", member=>{
             if (djRole) {
                 member.roles.add(djRole.id)
             }
-            if(member.id !="691346983494877216") {
-                channel.send(`Welcome to the ArtCafé ${member}. I hope you enjoy your stay, and please follow the rules.`)
-            }
+            channel.send(`Welcome to the ArtCafé ${member}. I hope you enjoy your stay, and please follow the rules.`)
         }
+    }
 })
 
 //log any member leaves to relevant channel
@@ -214,13 +208,27 @@ Client.on("guildMemberRemove", member=>{
 Client.on('message', message => {
     if(message.author.bot) return;
     levelling(message);
-    // banner(message,message.content)
     wordCheck(message)
 
     /**
      * PUBLIC COMMANDS
      */
-    //links, website, connect
+
+    /**
+     * links, website, connect, repeat
+     */
+
+    //repeat command
+    if (message.content.toLowerCase().startsWith(prefix + "repeat")) {
+        var content = message.content.split(" ");
+        content.shift();
+        content = content.join(" ")
+        if(content !== "i am stupid") {
+            message.channel.send(content)
+        }else{
+            message.channel.send("I know you are :)")
+        }
+    }
 
     /**
      *ADMIN COMMANDS
@@ -245,12 +253,38 @@ Client.on('message', message => {
                     if (member) {
                         member
                             .kick(kickMsg)
-                            .catch(err => {
-                                message.channel.send("I was not able to kick <@" + member + ">");
-                                console.log("Kick Error: " + err)
-                            }).then(res => {
-                            console.log("Member kicked");
-                            message.channel.send("Member kicked")
+                            .then(() => {
+                                message.channel.send("Kicked <@" + member + ">")
+                                console.log("Kicked "+member.nickname)
+                                var action = {
+                                    'type': 'kick',
+                                    'user': {
+                                        'id': message.author.id,
+                                        'username': message.author.username,
+                                        'avatar': message.author.avatarURL()
+                                    },
+                                    'member' : {
+                                        'id' : member.id,
+                                        'username' : member.user.username,
+                                        'nickname' : member.nickname,
+                                        'avatar' : member.user.avatarURL()
+                                    },
+                                    'channel': message.channel.name
+                                    }
+                                    console.log(action)
+                                    message.delete()
+                                }
+                            )
+                            .catch(function(err){
+                                if(err) {
+                                    message.channel.send("I was not able to kick <@" + member + ">");
+                                    console.log("Kick Error: " + err)
+                                    return message.delete()
+                                }
+
+                            // }).then(res => {
+                            // console.log("Member kicked");
+                            // message.channel.send("Member kicked")
                         });
                     }
                 } else {
